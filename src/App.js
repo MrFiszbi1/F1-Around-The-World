@@ -11,6 +11,8 @@ export default function App() {
 
 // url for the ergast API
 const url = "https://ergast.com/api/f1.json";
+const url1 = "https://ergast.com/api/f1/drivers.json";
+
 
 const fetchData = async (url) => {
   try {
@@ -24,4 +26,5 @@ const fetchData = async (url) => {
   }
 };
 
-fetchData(url);
+fetchData(url);     //default data, default limit of 30. Working
+fetchData(url1);    //driver data, default limit of 30. Working
