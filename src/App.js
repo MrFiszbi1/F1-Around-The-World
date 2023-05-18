@@ -9,10 +9,9 @@ export default function App() {
   );
 }
 
-// url for the ergast API
-const url = "https://ergast.com/api/f1.json";
-const url1 = "https://ergast.com/api/f1/drivers.json";
-
+// urls for the ergast API, fetching up to 1000 data points
+const url = "https://ergast.com/api/f1.json?limit=1000";
+const url1 = "https://ergast.com/api/f1/drivers.json?limit=1000";
 
 const fetchData = async (url) => {
   try {
@@ -26,5 +25,5 @@ const fetchData = async (url) => {
   }
 };
 
-fetchData(url);     //default data, default limit of 30. Working
-fetchData(url1);    //driver data, default limit of 30. Working
+fetchData(url);     //default data, limit 1000. Working
+fetchData(url1);    //driver data, limit 1000. Working
