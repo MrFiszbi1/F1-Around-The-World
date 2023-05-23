@@ -1,5 +1,6 @@
 {
   "name": "react",
+  "type": "module",
   "version": "1.0.0",
   "description": "React example starter project",
   "keywords": [
@@ -11,6 +12,7 @@
     "@mui/material": "^5.13.1",
     "axios": "^1.4.0",
     "loader-utils": "3.2.1",
+    "node-fetch": "^3.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-scripts": "5.0.1"
