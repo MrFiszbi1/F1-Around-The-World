@@ -14,25 +14,33 @@ export const data = [
 
 export default function Map() {
   return (
-    <Box sx={{display: 'flex', width: '75%', border: 1 }}>
-    <Chart
-      chartEvents={[
-        {
-          eventName: "select",
-          callback: ({ chartWrapper }) => {
-            const chart = chartWrapper.getChart();
-            const selection = chart.getSelection();
-            if (selection.length === 0) return;
-            const region = data[selection[0].row + 1];
-            console.log("Selected : " + region);
-          },
-        },
-      ]}
-      chartType="GeoChart"
-      width="100%"
-      height="400px"
-      data={data}
-    />
+    <Box sx={{
+        display: 'flex',           
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center', 
+        width: '75%', 
+        border: 1,
+    }}>
+        <h3>Random Data</h3>
+        <Chart
+        chartEvents={[
+            {
+            eventName: "select",
+            callback: ({ chartWrapper }) => {
+                const chart = chartWrapper.getChart();
+                const selection = chart.getSelection();
+                if (selection.length === 0) return;
+                const region = data[selection[0].row + 1];
+                console.log("Selected : " + region);
+            },
+            },
+        ]}
+        chartType="GeoChart"
+        width="100%"
+        height="400px"
+        data={data}
+        />
     </Box>
   );
 }
