@@ -1,10 +1,22 @@
 import './styles.css';
+import Map from './map';
+import Title from './title';
+import { Box } from '@mui/material';
 
 export default function App() {
   return (
     <div className='App'>
-      <h1>Hello From F1 Around The World</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Title />
+        <Map />
+      </Box>
     </div>
   );
 }
