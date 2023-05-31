@@ -10,8 +10,9 @@ export default function App() {
 }
 
 // urls for the ergast API, fetching up to 1000 data points
-const url = "https://ergast.com/api/f1.json?limit=1000";
-const url1 = "https://ergast.com/api/f1/drivers.json?limit=1000";
+const races_url = "http://ergast.com/api/f1.json?limit=1000";
+const drivers_url = "http://ergast.com/api/f1/drivers.json?limit=1000";
+const constructors_url = "http://ergast.com/api/f1/constructors.json?limit=300"
 
 const fetchData = async (url) => {
   try {
@@ -25,5 +26,6 @@ const fetchData = async (url) => {
   }
 };
 
-fetchData(url);     //default data, limit 1000. Working
-fetchData(url1);    //driver data, limit 1000. Working
+fetchData(races_url);           //races data, limit 1000. Working
+fetchData(drivers_url);         //driver data, limit 1000. Working
+fetchData(constructors_url);    //driver data, limit 300. Working
