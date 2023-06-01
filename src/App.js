@@ -1,10 +1,29 @@
-import './styles.css';
+import { Sidebar, useProSidebar } from "react-pro-sidebar";
+import SidebarMenu from "./components/SidebarMenu";
+import { Routes, Route } from "react-router-dom";
+import GeoChart from "./page/GeoChart";
+import BarChart from "./page/BarChart";
+import Home from "./page/Home";
 
 export default function App() {
+  const { collapseSidebar, isSidebarCollapsed } = useProSidebar();
   return (
-    <div className='App'>
-      <h1>Hello From F1 Around The World</h1>
-      <h2>Start editing to see some magic happen!</h2>
+    <div style={{ display: "flex", height: "100vh" }}>
+      <Sidebar
+        className="app"
+        style={{
+          backgroundColor: "rgb(0, 249, 249)",
+        }}
+      >
+        <SidebarMenu collapseSidebar={collapseSidebar} />
+      </Sidebar>
+      <section>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="geochart" element={<GeoChart />} />
+          <Route path="barchart" element={<BarChart />} />
+        </Routes>
+      </section>
     </div>
   );
 }
