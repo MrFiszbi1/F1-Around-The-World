@@ -34,35 +34,40 @@ const fetchData = async (url) => {
   }
 };
 
-//fetching from the API - uncomment to see it work
+//Demo: fetching from the API - uncomment to see it work
 // fetchData(races_url); //races data, limit 1000. Working
 // fetchData(drivers_url); //driver data, limit 1000. Working
 // fetchData(constructors_url); //driver data, limit 300. Working
 
-//fetching from the downloaded files - uncomment to see it work
+//Demo: fetching from the downloaded files - uncomment to see it work
 // fetchData(races_file);
 // fetchData(drivers_file);
 // fetchData(constructors_file);
 
-//fetch using an imported hook
+//Demo: fetch using an imported hook using API or downloaded
 import useFetchData from "./hooks/useFetchData"; //returns false if unable to fetch data.
 
-console.log(useFetchData(races_url));
-console.log(useFetchData(races_file));
+//Demo: fetch using an imported hook using API or downloaded
+console.log(await useFetchData(races_url));
+console.log(await useFetchData(races_file));
+
+//Demo: Location of the first Race in the data. (can eventually loop over entire Races array)
+// when refactoring, can destructure to get the country
+let raceData = await useFetchData(races_url);
+console.log(raceData.MRData.RaceTable.Races[0].Circuit.Location.country);
 
 //Demo WIP: fetching data from API but if it fails fetch from the backup
-let bad_races_url = "oopsasaseesdiudhlejh";
-let raceData;
+// let bad_races_url = "oopsasaseesdiudhlejh";
 
 //XXX: not running as expected
-if (useFetchData(races_url) === true) {
-  console.log("using browser API");
-  raceData = useFetchData(races_url);
-} else {
-  console.log("using backup file");
-  raceData = useFetchData(races_file);
-}
-console.log(raceData);
+// if (useFetchData(races_url) === true) {
+//   console.log("using browser API");
+//   raceData = useFetchData(races_url);
+// } else {
+//   console.log("using backup file");
+//   raceData = useFetchData(races_file);
+// }
+// console.log(raceData);
 
 //Used for downloading the data
 //print data as a string in the console, copy and place in data folder
