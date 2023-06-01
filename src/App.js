@@ -78,6 +78,16 @@ import useFetchRaces from "./hooks/useFetchRaces"; //async func, returns race da
 const raceDataClone = await useFetchRaces();
 console.log("Demo: useFetchRaces hook", raceDataClone);
 
+//Demo: fetching driver data with more specific hook - useFetchDrivers
+import useFetchDrivers from "./hooks/useFetchDrivers"; //async func, returns driver data no matter what
+const driverData = await useFetchDrivers();
+console.log("Demo: useFetchDrivers hook", driverData);
+
+//Demo: fetching race data with more specific hook - useFetchConstructors
+import useFetchConstructors from "./hooks/useFetchConstructors"; //async func, returns constructor data no matter what
+const constructorData = await useFetchConstructors();
+console.log("Demo: useFetchConstructors hook", constructorData);
+
 //Used for downloading the data
 //print data as a string in the console, copy and place in data folder
 // const printData = async (url) => {
