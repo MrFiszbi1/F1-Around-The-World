@@ -48,26 +48,30 @@ const fetchData = async (url) => {
 import useFetchData from "./hooks/useFetchData"; //returns false if unable to fetch data.
 
 //Demo: fetch using an imported hook using API or downloaded
-console.log(await useFetchData(races_url));
-console.log(await useFetchData(races_file));
+console.log("Demo: fetch using an imported hook using API or downloaded");
+console.log("From API: ", await useFetchData(races_url));
+console.log("From a file: ", await useFetchData(races_file));
 
 //Demo: Location of the first Race in the data. (can eventually loop over entire Races array)
 // when refactoring, can destructure to get the country
 let raceData = await useFetchData(races_url);
-console.log(raceData.MRData.RaceTable.Races[0].Circuit.Location.country);
+console.log(
+  "Demo: Location of the first Race in the data - ",
+  raceData.MRData.RaceTable.Races[0].Circuit.Location.country
+);
 
-//Demo WIP: fetching data from API but if it fails fetch from the backup
-// let bad_races_url = "oopsasaseesdiudhlejh";
+//Demo: fetching data from API fails, use backup instead
+console.log("Demo: fetching data from API fails, use backup instead");
 
-//XXX: not running as expected
-// if (useFetchData(races_url) === true) {
-//   console.log("using browser API");
-//   raceData = useFetchData(races_url);
-// } else {
-//   console.log("using backup file");
-//   raceData = useFetchData(races_file);
-// }
-// console.log(raceData);
+let bad_races_url = "oopsasaseesdiudhlejh";
+raceData = await useFetchData(bad_races_url); //change to races_url to see it work normally
+if (raceData === false) {
+  console.log("API Error! Using backup file instead");
+  raceData = await useFetchData(races_file);
+} else {
+  console.log("Successfully fetched from API");
+}
+console.log(raceData);
 
 //Used for downloading the data
 //print data as a string in the console, copy and place in data folder
