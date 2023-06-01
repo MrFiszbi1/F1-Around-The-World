@@ -45,7 +45,7 @@ const fetchData = async (url) => {
 // fetchData(constructors_file);
 
 //Demo: fetch using an imported hook using API or downloaded
-import useFetchData from "./hooks/useFetchData"; //returns false if unable to fetch data.
+import useFetchData from "./hooks/useFetchData"; //async func, returns false if unable to fetch data.
 
 //Demo: fetch using an imported hook using API or downloaded
 console.log("Demo: fetch using an imported hook using API or downloaded");
@@ -72,6 +72,11 @@ if (raceData === false) {
   console.log("Successfully fetched from API");
 }
 console.log(raceData);
+
+//Demo: fetching race data with more specific hook - useFetchRaces
+import useFetchRaces from "./hooks/useFetchRaces"; //async func, returns race data no matter what
+const raceDataClone = await useFetchRaces();
+console.log("Demo: useFetchRaces hook", raceDataClone);
 
 //Used for downloading the data
 //print data as a string in the console, copy and place in data folder
