@@ -74,7 +74,7 @@ export default function Map() {
       const uniqueNationalitiesSet = new Set(nationalities);
       setUniqueNationalities(Array.from(uniqueNationalitiesSet));
     }
-  }, [nationalities]);
+  }, [nationalities.length]);
 
   useEffect(() => {
     if (uniqueNationalities.length > 0) {
@@ -88,9 +88,8 @@ export default function Map() {
       countArray = countArray.filter((_, index) => index !== 10);
       setNationalityCount(countArray);
     }
-  }, [uniqueNationalities]);
+  }, [uniqueNationalities.length]);
 
-  console.log(nationalities);
   console.log(nationalityCount);
 
   return (
