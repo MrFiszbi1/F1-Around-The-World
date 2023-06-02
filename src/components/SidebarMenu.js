@@ -1,7 +1,7 @@
 import React from "react";
 import { Menu, MenuItem } from "react-pro-sidebar";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import FeedbackIcon from "@mui/icons-material/Feedback";
+import MapIcon from "@mui/icons-material/Map";
+import BarChartIcon from "@mui/icons-material/BarChart";
 import HomeIcon from "@mui/icons-material/Home";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { Link } from "react-router-dom";
@@ -29,15 +29,15 @@ const SidebarMenu = ({ collapseSidebar }) => {
       </MenuItem>
       <MenuItem
         component={<Link to="geochart" className="link" />}
-        icon={<DashboardIcon />}
+        icon={<MapIcon />}
       >
         Geo Chart
       </MenuItem>
       <MenuItem
-        component={<Link to="barchart" className="link" />}
-        icon={<FeedbackIcon />}
+        component={<Link to="countrycomparison" className="link" />}
+        icon={<BarChartIcon />}
       >
-        Bar Chart
+        Country Comparison
       </MenuItem>
     </Menu>
   );

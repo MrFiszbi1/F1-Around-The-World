@@ -2,7 +2,7 @@ import { Sidebar, useProSidebar } from "react-pro-sidebar";
 import SidebarMenu from "./components/SidebarMenu";
 import { Routes, Route } from "react-router-dom";
 import GeoChart from "./page/GeoChart";
-import BarChart from "./page/BarChart";
+import CountryComparison from "./page/countryComparison";
 import Home from "./page/Home";
 
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="geochart" element={<GeoChart />} />
-          <Route path="barchart" element={<BarChart />} />
+          <Route path="countrycomparison" element={<CountryComparison />} />
         </Routes>
       </section>
     </div>

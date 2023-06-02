@@ -1,6 +1,6 @@
 import React from "react";
 
-const BarChart = () => {
+const CountryComparison = () => {
   return (
     <div>
       <h2>This is the Bar Chart page</h2>
@@ -8,4 +8,4 @@ const BarChart = () => {
   );
 };
 
-export default BarChart;
+export default CountryComparison;
