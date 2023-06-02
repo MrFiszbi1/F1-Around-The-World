@@ -8,7 +8,9 @@
   ],
   "main": "src/index.js",
   "dependencies": {
-    "@mui/material": "^5.13.1",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.3",
     "axios": "^1.4.0",
     "chart.js": "^4.3.0",
     "loader-utils": "3.2.1",

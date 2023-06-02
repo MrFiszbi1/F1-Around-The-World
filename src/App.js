@@ -1,5 +1,6 @@
 import "./styles.css";
 import BarChart from "./components/f3-barcharts";
+import DropdownCountry from "./components/f3-dropdown";
 import React from "react";
 
 export default function App() {
@@ -9,6 +10,8 @@ export default function App() {
       <h2>Start editing to see some magic happen!</h2>
 
       <BarChart />
+      <DropdownCountry />
+
     </div>
   );
 }
