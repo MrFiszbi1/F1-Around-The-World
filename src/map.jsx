@@ -78,12 +78,14 @@ export default function Map() {
 
   useEffect(() => {
     if (uniqueNationalities.length > 0) {
-      let countArray = uniqueNationalities.map((nationality, index) => ({
-        country: countryNames[index],
-        count: nationalities.filter((n) => n === nationality).length,
-      }));
-      countArray[1].count++;
-      countArray = countArray.slice(0, 9).concat(countArray.slice(10));
+      const header = ["Country", "Number of Drivers"];
+      let countArray = uniqueNationalities.map((nationality, index) => ([
+        countryNames[index],
+        nationalities.filter((n) => n === nationality).length,
+      ]));
+      countArray.unshift(header);
+      countArray[1][1]++;
+      countArray = countArray.filter((_, index) => index !== 10);
       setNationalityCount(countArray);
     }
   }, [uniqueNationalities]);
@@ -117,7 +119,7 @@ export default function Map() {
         chartType="GeoChart"
         width="100%"
         height="400px"
-        data={[["Country", "Number of Drivers"], ...nationalityCount.map(({ country, count }) => [country, count])]}
+        data={nationalityCount}
         />
     </Box>
   );
