@@ -1,10 +1,21 @@
 import React from "react";
+import { Box } from "@mui/material";
+import Map from '../components/map';
+import Title from '../components/title';
 
 const GeoChart = () => {
   return (
-    <div>
-      <h2>This is the Geo Chart page</h2>
-    </div>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Title />
+      <Map />
+    </Box>
   );
 };
 
