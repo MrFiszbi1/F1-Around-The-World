@@ -90,9 +90,6 @@ export default function Map() {
     }
   }, [uniqueNationalities.length]);
 
-  console.log(data);
-  console.log(nationalities);
-  console.log(uniqueNationalities);
   console.log(nationalityCount);
 
   return (
@@ -101,7 +98,7 @@ export default function Map() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center', 
-        width: '75%', 
+        width: '85%', 
         border: 1,
     }}>
         <h3>Number of constructors from each country</h3>

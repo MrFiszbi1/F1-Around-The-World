@@ -1,19 +1,17 @@
 import './styles.css';
-import Map from './map';
-import Title from './title';
-import { Box } from '@mui/material';
 import { Sidebar, useProSidebar } from 'react-pro-sidebar';
 import SidebarMenu from './components/SidebarMenu';
 import { Routes, Route } from 'react-router-dom';
 import GeoChart from './page/GeoChart';
 import CountryComparison from './page/countryComparison';
 import Home from './page/Home';
+import { Box } from '@mui/material';
 
 export default function App() {
-  //const { collapseSidebar, isSidebarCollapsed } = useProSidebar();
+  const { collapseSidebar, isSidebarCollapsed } = useProSidebar();
   return (
     <div className='App'>
-      {/*       <div style={{ display: 'flex', height: '100vh' }}>
+      <div style={{ display: 'flex', height: '100vh' }}>
         <Sidebar
           className='app'
           style={{
@@ -29,18 +27,7 @@ export default function App() {
             <Route path='countrycomparison' element={<CountryComparison />} />
           </Routes>
         </section>
-      </div> */}
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Title />
-        <Map />
-      </Box>
+      </div>
     </div>
   );
 }
