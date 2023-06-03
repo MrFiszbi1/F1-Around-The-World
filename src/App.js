@@ -20,7 +20,7 @@ export default function App() {
         >
           <SidebarMenu collapseSidebar={collapseSidebar} />
         </Sidebar>
-        <section>
+        <section style={{ width: '100%', margin: '20px' }}>
           <Routes>
             <Route path='/' element={<Home />}></Route>
             <Route path='geochart' element={<GeoChart />} />
