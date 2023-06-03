@@ -10,21 +10,10 @@ import CountryComparison from './page/countryComparison';
 import Home from './page/Home';
 
 export default function App() {
-  const { collapseSidebar, isSidebarCollapsed } = useProSidebar();
+  //const { collapseSidebar, isSidebarCollapsed } = useProSidebar();
   return (
     <div className='App'>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Title />
-        <Map />
-      </Box>
-      <div style={{ display: 'flex', height: '100vh' }}>
+      {/*       <div style={{ display: 'flex', height: '100vh' }}>
         <Sidebar
           className='app'
           style={{
@@ -40,7 +29,18 @@ export default function App() {
             <Route path='countrycomparison' element={<CountryComparison />} />
           </Routes>
         </section>
-      </div>
+      </div> */}
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Title />
+        <Map />
+      </Box>
     </div>
   );
 }
@@ -48,17 +48,17 @@ export default function App() {
 // --------------------- Everything following is proof of concept/demo ------------
 
 // urls for the ergast API, fetching up to 1000 data points
-const races_url = 'http://ergast.com/api/f1.json?limit=1000';
+/* const races_url = 'http://ergast.com/api/f1.json?limit=1000';
 const drivers_url = 'http://ergast.com/api/f1/drivers.json?limit=1000';
-const constructors_url = 'http://ergast.com/api/f1/constructors.json?limit=300';
+const constructors_url = 'http://ergast.com/api/f1/constructors.json?limit=300'; */
 
 // downloaded files linked
-const races_file = './data/races.json';
+/* const races_file = './data/races.json';
 const drivers_file = './data/drivers.json';
-const constructors_file = './data/constructors.json';
+const constructors_file = './data/constructors.json'; */
 
 // deprecated, now in hooks folder
-const fetchData = async (url) => {
+/* const fetchData = async (url) => {
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -68,7 +68,7 @@ const fetchData = async (url) => {
   } finally {
     console.log('Finally block, runs regardsless. Fill in');
   }
-};
+}; */
 
 //Demo: fetching from the API - uncomment to see it work
 // fetchData(races_url); //races data, limit 1000. Working
@@ -81,23 +81,23 @@ const fetchData = async (url) => {
 // fetchData(constructors_file);
 
 //Demo: fetch using an imported hook using API or downloaded
-import useFetchData from './hooks/useFetchData'; //async func, returns false if unable to fetch data.
+//import useFetchData from './hooks/useFetchData'; async func, returns false if unable to fetch data.
 
 //Demo: fetch using an imported hook using API or downloaded
-console.log('Demo: fetch using an imported hook using API or downloaded');
+/* console.log('Demo: fetch using an imported hook using API or downloaded');
 console.log('From API: ', await useFetchData(races_url));
-console.log('From a file: ', await useFetchData(races_file));
+console.log('From a file: ', await useFetchData(races_file)); */
 
 //Demo: Location of the first Race in the data. (can eventually loop over entire Races array)
 // when refactoring, can destructure to get the country
-let raceData = await useFetchData(races_url);
+/* let raceData = await useFetchData(races_url);
 console.log(
   'Demo: Location of the first Race in the data - ',
   raceData.MRData.RaceTable.Races[0].Circuit.Location.country
-);
+); */
 
 //Demo: fetching data from API fails, use backup instead
-console.log('Demo: fetching data from API fails, use backup instead');
+/* console.log('Demo: fetching data from API fails, use backup instead');
 
 let bad_races_url = 'oopsasaseesdiudhlejh';
 raceData = await useFetchData(bad_races_url); //change to races_url to see it work normally
@@ -107,22 +107,22 @@ if (raceData === false) {
 } else {
   console.log('Successfully fetched from API');
 }
-console.log(raceData);
+console.log(raceData); */
 
 //Demo: fetching race data with more specific hook - useFetchRaces
-import useFetchRaces from './hooks/useFetchRaces'; //async func, returns race data no matter what
+/* import useFetchRaces from './hooks/useFetchRaces'; //async func, returns race data no matter what
 const raceDataClone = await useFetchRaces();
-console.log('Demo: useFetchRaces hook', raceDataClone);
+console.log('Demo: useFetchRaces hook', raceDataClone); */
 
 //Demo: fetching driver data with more specific hook - useFetchDrivers
-import useFetchDrivers from './hooks/useFetchDrivers'; //async func, returns driver data no matter what
+/* import useFetchDrivers from './hooks/useFetchDrivers'; //async func, returns driver data no matter what
 const driverData = await useFetchDrivers();
-console.log('Demo: useFetchDrivers hook', driverData);
+console.log('Demo: useFetchDrivers hook', driverData); */
 
 //Demo: fetching race data with more specific hook - useFetchConstructors
-import useFetchConstructors from './hooks/useFetchConstructors'; //async func, returns constructor data no matter what
+/* import useFetchConstructors from './hooks/useFetchConstructors'; //async func, returns constructor data no matter what
 const constructorData = await useFetchConstructors();
-console.log('Demo: useFetchConstructors hook', constructorData);
+console.log('Demo: useFetchConstructors hook', constructorData); */
 
 //Used for downloading the data
 //print data as a string in the console, copy and place in data folder
