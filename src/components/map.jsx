@@ -2,14 +2,27 @@ import React, { useState, useEffect } from "react";
 import { Chart } from "react-google-charts";
 import { Box } from "@mui/material";
 import filterConstructors from '../hooks/filterConstructors.js';
+import filterDrivers from '../hooks/filterDrivers.js';
+import useFetchDrivers from '../hooks/useFetchDrivers.js';
 
 export default function Map() {
-  const [nationalityCount, setNationalityCount] = useState([]);
+  const [constructorsCount, setConstructorsCount] = useState([]);
+  const [driversCount, setDriversCount] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await filterConstructors();
-      setNationalityCount(result);
+      setConstructorsCount(result);
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await filterDrivers();
+      setDriversCount(result);
+      console.log(driversCount);
     };
 
     fetchData();
@@ -24,7 +37,7 @@ export default function Map() {
         width: '85%', 
         border: 1,
     }}>
-        <h3>Number of constructors from each country</h3>
+        <h3>Number of drivers from each country</h3>
         <Chart
         chartEvents={[
             {
@@ -41,7 +54,7 @@ export default function Map() {
         chartType="GeoChart"
         width="100%"
         height="400px"
-        data={nationalityCount}
+        data={driversCount}
         />
     </Box>
   );

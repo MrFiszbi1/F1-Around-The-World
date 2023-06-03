@@ -1,6 +1,6 @@
 import useFetchConstructors from './useFetchConstructors';
 
-const fillterConstructors = async () => {
+const filterConstructors = async () => {
   const data = await useFetchConstructors();
   const nationalities = [];
   const uniqueNationalities = [];
@@ -59,9 +59,9 @@ const fillterConstructors = async () => {
     nationalityCount.push(...countArray);
   }
 
-  console.log(nationalityCount);
+  //console.log(nationalityCount);
 
   return nationalityCount;
 };
 
-export default fillterConstructors;
+export default filterConstructors;
