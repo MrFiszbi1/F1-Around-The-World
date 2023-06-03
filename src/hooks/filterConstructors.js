@@ -59,8 +59,6 @@ const filterConstructors = async () => {
     nationalityCount.push(...countArray);
   }
 
-  //console.log(nationalityCount);
-
   return nationalityCount;
 };
 

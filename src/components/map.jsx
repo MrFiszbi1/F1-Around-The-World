@@ -3,11 +3,13 @@ import { Chart } from "react-google-charts";
 import { Box } from "@mui/material";
 import filterConstructors from '../hooks/filterConstructors.js';
 import filterDrivers from '../hooks/filterDrivers.js';
+import filterRaces from '../hooks/filterRaces.js';
 import useFetchDrivers from '../hooks/useFetchDrivers.js';
 
 export default function Map() {
   const [constructorsCount, setConstructorsCount] = useState([]);
   const [driversCount, setDriversCount] = useState([]);
+  const [racesCount, setRacesCount] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +24,15 @@ export default function Map() {
     const fetchData = async () => {
       const result = await filterDrivers();
       setDriversCount(result);
-      console.log(driversCount);
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await filterRaces();
+      setRacesCount(result);
     };
 
     fetchData();
@@ -54,7 +64,7 @@ export default function Map() {
         chartType="GeoChart"
         width="100%"
         height="400px"
-        data={driversCount}
+        data={racesCount}
         />
     </Box>
   );
