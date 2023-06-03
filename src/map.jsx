@@ -78,10 +78,10 @@ export default function Map() {
 
   useEffect(() => {
     if (uniqueNationalities.length > 0) {
-      const header = ["Country", "Number of Drivers"];
-      let countArray = uniqueNationalities.map((nationality, index) => ([
+      const header = ["Country", "Number of constructors from each country"];
+      let countArray = uniqueNationalities.map((uniqueNationality, index) => ([
         countryNames[index],
-        nationalities.filter((n) => n === nationality).length,
+        nationalities.filter((n) => n === uniqueNationality).length,
       ]));
       countArray.unshift(header);
       countArray[1][1]++;
@@ -90,6 +90,9 @@ export default function Map() {
     }
   }, [uniqueNationalities.length]);
 
+  console.log(data);
+  console.log(nationalities);
+  console.log(uniqueNationalities);
   console.log(nationalityCount);
 
   return (
@@ -101,7 +104,7 @@ export default function Map() {
         width: '75%', 
         border: 1,
     }}>
-        <h3>Number of Drivers</h3>
+        <h3>Number of constructors from each country</h3>
         <Chart
         chartEvents={[
             {
