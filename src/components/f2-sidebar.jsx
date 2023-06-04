@@ -1,80 +1,6 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// import {
-//   Card,
-//   CardContent,
-//   Accordion,
-//   AccordionSummary,
-//   AccordionDetails,
-//   Typography,
-//   CardHeader,
-// } from "@mui/material";
-// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
-// const CardComponent = ({ region }) => {
-//   const [raceCount, setRaceCount] = useState(0);
-//   const [raceNames, setRaceNames] = useState([]);
-
-//   useEffect(() => {
-//     const fetchRaceCountByCountry = async () => {
-//       try {
-//         const response = await axios.get("http://ergast.com/api/f1.json");
-
-//         const races = response.data.MRData.RaceTable.Races;
-//         let raceCountByCountry = 0;
-//         const uniqueRaceNames = new Set(); // Use a Set to store unique race names
-
-//         races.forEach((race) => {
-//           if (race.Circuit.Location.country === region) {
-//             uniqueRaceNames.add(race.raceName); // Add each race name to the Set
-//             raceCountByCountry++;
-//           }
-//         });
-
-//         setRaceCount(raceCountByCountry);
-//         setRaceNames(Array.from(uniqueRaceNames)); // Convert the Set to an array for rendering
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     };
-
-//     fetchRaceCountByCountry();
-//   }, [region]);
-
-//   return (
-//     <Card sx={{ width: 300, height: 300, backgroundColor: "gray", opacity: 1 }}>
-//       <CardHeader
-//         title="This is a header"
-//         sx={{ color: "white", borderBottom: "solid", paddingBottom: 1 }}
-//       />
-//       <CardContent>
-//         <Accordion
-//           id="panel1-header"
-//           aria-controls="panel1-content"
-//           expandIcon={<ExpandMoreIcon color="disabled" />}
-//         >
-//           <AccordionSummary>
-//             <Typography>
-//               Number of Races ({region}): {raceCount}
-//             </Typography>
-//           </AccordionSummary>
-//           <AccordionDetails>
-//             <Typography>
-//               {raceNames.map((race, index) => (
-//                 <span key={index}>{race}</span>
-//               ))}
-//             </Typography>
-//           </AccordionDetails>
-//         </Accordion>
-//       </CardContent>
-//     </Card>
-//   );
-// };
-
-// export default CardComponent;
-
 import React from "react";
 import {
+  Box,
   Card,
   CardContent,
   Accordion,
@@ -85,37 +11,90 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import useRaceCount from "../hooks/useRaceCount";
+import useCircuitCount from "../hooks/useCircuitCount";
+import { green } from "@mui/material/colors";
 
 const CardComponent = ({ region }) => {
   const { raceCount, raceNames } = useRaceCount(region);
+  const { circuitCount, circuitNames, circuitURLs } = useCircuitCount(region);
 
   return (
-    <Card sx={{ width: 300, height: 300, backgroundColor: "gray", opacity: 1 }}>
-      <CardHeader
-        title="This is a header"
-        sx={{ color: "white", borderBottom: "solid", paddingBottom: 1 }}
-      />
-      <CardContent>
-        <Accordion
-          id="panel1-header"
-          aria-controls="panel1-content"
-          expandIcon={<ExpandMoreIcon color="disabled" />}
-        >
-          <AccordionSummary>
-            <Typography>
-              Number of Races ({region}): {raceCount}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              {raceNames.map((race, index) => (
-                <span key={index}>{race}</span>
-              ))}
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-      </CardContent>
-    </Card>
+    <Box sx={{ width: 320 }}>
+      <Card
+        sx={{
+          width: "100%",
+          height: "100%",
+          backgroundColor: "#02192B",
+          opacity: 0.9,
+        }}
+      >
+        <CardHeader
+          title="COUNTRY STATS"
+          sx={{
+            color: "#fffffff1",
+            borderBottom: "1px solid",
+            borderWidth: "1px",
+            paddingBottom: 1,
+          }}
+        />
+        <CardContent>
+          <Accordion
+            id="panel1-header"
+            aria-controls="panel1-content"
+            sx={{
+              backgroundColor: "#bd3e58",
+              color: "white",
+            }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon sx={{ color: green[100] }} />}
+              sx={{ backgroundColor: "#b21e3c" }}
+            >
+              <Typography>
+                Number of races in {region}: {raceCount}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>
+                {raceNames.map((race, index) => (
+                  <Typography key={index}>{race}</Typography>
+                ))}
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            id="panel1-header"
+            aria-controls="panel1-content"
+            sx={{ backgroundColor: "#bd3e58", color: "white" }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon sx={{ color: green[100] }} />}
+              sx={{ backgroundColor: "#b21e3c" }}
+            >
+              <Typography>
+                Number of circuit in {region}: {circuitCount}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>
+                {circuitNames.map((circuit, index) => (
+                  <Typography key={index}>
+                    <a
+                      href={circuitURLs[index]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: "white" }}
+                    >
+                      {circuit}
+                    </a>
+                  </Typography>
+                ))}
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+        </CardContent>
+      </Card>
+    </Box>
   );
 };
 
