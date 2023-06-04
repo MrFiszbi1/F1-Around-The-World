@@ -1,96 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { Chart } from "react-google-charts";
 import { Box } from "@mui/material";
-import axios from "axios";
-
-const url = "http://ergast.com/api/f1/constructors.json?limit=300";
-
-const useFetchData = (url) => {
-  const [data, setData] = useState(null);
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(url);
-        setData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    
-    fetchData();
-  }, []);
-  
-  return data;
-};
+import filterConstructors from '../hooks/filterConstructors.js';
+import filterDrivers from '../hooks/filterDrivers.js';
+import filterRaces from '../hooks/filterRaces.js';
+import useFetchDrivers from '../hooks/useFetchDrivers.js';
 
 export default function Map() {
-  const data = useFetchData(url);
-  const [nationalities, setNationalities] = useState([]);
-  const [uniqueNationalities, setUniqueNationalities] = useState([]);
-  const [nationalityCount, setNationalityCount] = useState([]);
-  const countryNames = 
-  [
-    'United States',
-    'Germany',
-    'France',
-    'Switzerland',
-    'Italy',
-    'United Kingdom',
-    'New Zealand',
-    'Netherlands',
-    'Malaysia',
-    'Germany',
-    'Belgium',
-    'Brazil',
-    'India',
-    'Japan',
-    'Spain',
-    'Ireland',
-    'South Africa',
-    'Russia',
-    'Australia',
-    'Rhodesia',
-    'Mexico',
-    'Austria',
-    'Canada',
-    'China'
-  ];
+  const [constructorsCount, setConstructorsCount] = useState([]);
+  const [driversCount, setDriversCount] = useState([]);
+  const [racesCount, setRacesCount] = useState([]);
 
   useEffect(() => {
-    if (data) {
-      const constructorData = data.MRData.ConstructorTable.Constructors;
-      if (constructorData) {
-        const nationalitiesArray = constructorData.map(
-          (constructor) => constructor.nationality
-        );
-        setNationalities(nationalitiesArray);
-      }
-    }
-  }, [data]);
+    const fetchData = async () => {
+      const result = await filterConstructors();
+      setConstructorsCount(result);
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
-    if (nationalities.length > 0) {
-      const uniqueNationalitiesSet = new Set(nationalities);
-      setUniqueNationalities(Array.from(uniqueNationalitiesSet));
-    }
-  }, [nationalities.length]);
+    const fetchData = async () => {
+      const result = await filterDrivers();
+      setDriversCount(result);
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
-    if (uniqueNationalities.length > 0) {
-      const header = ["Country", "Number of constructors from each country"];
-      let countArray = uniqueNationalities.map((uniqueNationality, index) => ([
-        countryNames[index],
-        nationalities.filter((n) => n === uniqueNationality).length,
-      ]));
-      countArray.unshift(header);
-      countArray[1][1]++;
-      countArray = countArray.filter((_, index) => index !== 10);
-      setNationalityCount(countArray);
-    }
-  }, [uniqueNationalities.length]);
+    const fetchData = async () => {
+      const result = await filterRaces();
+      setRacesCount(result);
+    };
 
-  console.log(nationalityCount);
+    fetchData();
+  }, []);
 
   return (
     <Box sx={{
@@ -101,7 +47,7 @@ export default function Map() {
         width: '85%', 
         border: 1,
     }}>
-        <h3>Number of constructors from each country</h3>
+        <h3>Number of drivers from each country</h3>
         <Chart
         chartEvents={[
             {
@@ -110,7 +56,7 @@ export default function Map() {
                 const chart = chartWrapper.getChart();
                 const selection = chart.getSelection();
                 if (selection.length === 0) return;
-                const region = data[selection[0].row + 1];
+                const region = racesCount[selection[0].row + 1];
                 console.log("Selected : " + region);
             },
             },
@@ -118,7 +64,7 @@ export default function Map() {
         chartType="GeoChart"
         width="100%"
         height="400px"
-        data={nationalityCount}
+        data={racesCount}
         />
     </Box>
   );
