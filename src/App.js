@@ -8,8 +8,8 @@ export default function App() {
       style={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
+        // alignItems: "center",
+        // justifyContent: "center",
       }}
     >
       <h1>Hello From F1 Around The World</h1>

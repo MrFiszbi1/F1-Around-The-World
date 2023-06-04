@@ -10,6 +10,7 @@ import {
   CardHeader,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import useRaceCount from "../hooks/useRaceCount";
 import useCircuitCount from "../hooks/useCircuitCount";
 import { green } from "@mui/material/colors";
@@ -29,7 +30,8 @@ const CardComponent = ({ region }) => {
         }}
       >
         <CardHeader
-          title="COUNTRY STATS"
+          title={<Typography variant="h6">COUNTRY STATS</Typography>}
+          avatar={<QueryStatsIcon fontSize="large" />}
           sx={{
             color: "#fffffff1",
             borderBottom: "1px solid",
@@ -55,6 +57,7 @@ const CardComponent = ({ region }) => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
+              <Typography color={"#ffffff"}>Name of races</Typography>
               <Typography>
                 {raceNames.map((race, index) => (
                   <Typography key={index}>{race}</Typography>
