@@ -59,7 +59,7 @@ const filterRaces = async () => {
   console.log(uniqueNationalities);
 
   if (uniqueNationalities.length > 0) {
-    const header = ['Country', 'Number of drivers from each country'];
+    const header = ['Country', 'Number of races held in each country'];
     let countArray = uniqueNationalities.map((uniqueNationality, index) => [
       countryNames[index],
       nationalities.filter((n) => n === uniqueNationality).length,
