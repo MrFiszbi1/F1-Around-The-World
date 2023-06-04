@@ -1,19 +1,21 @@
 import React from "react";
-import CardComponent from "../components/f2-sidebar";
+import { Box } from "@mui/material";
+import Map from "../components/map";
+import Title from "../components/title";
 
 const GeoChart = () => {
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
-      <h2>This is the Geo Chart page</h2>
-      <div style={{ alignSelf: "flex-end" }}>
-        <CardComponent region={"USA"} />
-      </div>
-    </div>
+      <Title />
+      <Map />
+    </Box>
   );
 };
 
