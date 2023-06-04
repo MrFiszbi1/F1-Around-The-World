@@ -56,7 +56,7 @@ export default function Map() {
                 const chart = chartWrapper.getChart();
                 const selection = chart.getSelection();
                 if (selection.length === 0) return;
-                const region = data[selection[0].row + 1];
+                const region = racesCount[selection[0].row + 1];
                 console.log("Selected : " + region);
             },
             },
