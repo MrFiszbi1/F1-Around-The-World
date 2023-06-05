@@ -1,12 +1,14 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Box } from "@mui/material";
 import Map from "../components/map";
 import Title from "../components/title";
 import CardComponent from "../components/f2-sidebar";
 import RegionContext from "../hooks/RegionProvider.jsx";
+import MapDataSelect from "../components/mapDataSelect";
 
 const GeoChart = () => {
   const { selectedRegion } = useContext(RegionContext);
+  const [map, setMap] = useState("");
 
   // Convert selectedRegion object to string
   const selectedRegionString = selectedRegion && selectedRegion.toString();
@@ -18,6 +20,10 @@ const GeoChart = () => {
       .replace(/United States/g, "USA")
       .replace(/[\d.,]+/g, "");
 
+  useEffect(() => {
+    console.log(`Map is now set to: ${map}`);
+  }, [map]);
+
   return (
     <Box
       sx={{
@@ -28,10 +34,15 @@ const GeoChart = () => {
       }}
     >
       <Title />
-      <div style={{ display: "flex", width: "95%" }}>
-        <Map />
-        <CardComponent region={regionName} />
-      </div>
+
+      <MapDataSelect setMap={setMap} />
+      <Box sx={{ width: "100%", display: "flex" }}>
+        {map && <Map map={map} onMapChange={setMap} />}
+
+        <Box sx={{ height: "100%" }}>
+          {map !== "" && <CardComponent region={regionName} />}
+        </Box>
+      </Box>
     </Box>
   );
 };
