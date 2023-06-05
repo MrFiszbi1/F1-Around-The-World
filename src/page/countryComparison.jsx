@@ -4,6 +4,7 @@ import filterDrivers from "../hooks/filterDrivers.js";
 import filterRaces from "../hooks/filterRaces.js";
 import DropdownCountry from "../components/compareDropDown.jsx";
 import BarChart from "../components/compareBarChart.jsx";
+import { Grid } from "@mui/material";
 
 const CountryComparison = () => {
   const [racesCount, setRacesCount] = useState([]);
@@ -13,7 +14,6 @@ const CountryComparison = () => {
   const [label1, setLabel1] = useState([]);
   const [data2, setData2] = useState([]);
   const [label2, setLabel2] = useState([]);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,22 +47,42 @@ const CountryComparison = () => {
     <div>
       <h2>Compare any 2 Countries</h2>
 
-      <DropdownCountry
-        setData={setData1}
-        setLabel={setLabel1}
-        racesCount={racesCount}
-        driversCount={driversCount}
-        constructorsCount={constructorsCount}
-      />
-      <DropdownCountry
-        setData={setData2}
-        setLabel={setLabel2}
-        racesCount={racesCount}
-        driversCount={driversCount}
-        constructorsCount={constructorsCount}
-      />      
-      <BarChart passedData={data1} passedLabel={label1} backgroundColor={"#F44336"} borderColor={"#F44336"}/>
-      <BarChart passedData={data2} passedLabel={label2} backgroundColor={"#1E88E5"} borderColor={"#1E88E5"}/>
+      <Grid container spacing={10}>
+        <Grid item xs={6}>
+          <DropdownCountry
+            setData={setData1}
+            setLabel={setLabel1}
+            racesCount={racesCount}
+            driversCount={driversCount}
+            constructorsCount={constructorsCount}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <DropdownCountry
+            setData={setData2}
+            setLabel={setLabel2}
+            racesCount={racesCount}
+            driversCount={driversCount}
+            constructorsCount={constructorsCount}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <BarChart
+            passedData={data1}
+            passedLabel={label1}
+            backgroundColor={"#F44336"}
+            borderColor={"#F44336"}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <BarChart
+            passedData={data2}
+            passedLabel={label2}
+            backgroundColor={"#1E88E5"}
+            borderColor={"#1E88E5"}
+          />
+        </Grid>
+      </Grid>
     </div>
   );
 };
