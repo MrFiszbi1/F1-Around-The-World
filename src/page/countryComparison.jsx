@@ -47,9 +47,10 @@ const CountryComparison = () => {
     <div>
       <h2>Compare any 2 Countries</h2>
 
-      <Grid container spacing={10}>
+      <Grid container spacing={5}>
         <Grid item xs={6}>
           <DropdownCountry
+            label={"Country 1"}
             setData={setData1}
             setLabel={setLabel1}
             racesCount={racesCount}
@@ -59,6 +60,7 @@ const CountryComparison = () => {
         </Grid>
         <Grid item xs={6}>
           <DropdownCountry
+            label={"Country 2"}
             setData={setData2}
             setLabel={setLabel2}
             racesCount={racesCount}
@@ -66,20 +68,16 @@ const CountryComparison = () => {
             constructorsCount={constructorsCount}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <BarChart
-            passedData={data1}
-            passedLabel={label1}
-            backgroundColor={"#F44336"}
-            borderColor={"#F44336"}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <BarChart
-            passedData={data2}
-            passedLabel={label2}
-            backgroundColor={"#1E88E5"}
-            borderColor={"#1E88E5"}
+            passedData1={data1}
+            passedLabel1={label1}
+            backgroundColor1={"#F44336"}
+            borderColor1={"#F44336"}
+            passedData2={data2}
+            passedLabel2={label2}
+            backgroundColor2={"#1E88E5"}
+            borderColor2={"#1E88E5"}
           />
         </Grid>
       </Grid>

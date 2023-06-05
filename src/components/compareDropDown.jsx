@@ -55,6 +55,7 @@ const dropdownOptions = [
 ];
 
 export default function DropdownCountry({
+  label,
   setData,
   setLabel,
   racesCount,
@@ -63,6 +64,8 @@ export default function DropdownCountry({
 }) {
   let data = [0, 0, 0]; //default data
   const [countrySelected, setCountrySelected] = useState([]);
+
+  console.log(label);
 
   //Now correctly changes data according to what the user picks, but takes some time to update
   const handleChange = (event) => {
@@ -98,12 +101,12 @@ export default function DropdownCountry({
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Country</InputLabel>
+        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={countrySelected}
-          label="Country"
+          label={label}
           onChange={handleChange}
         >
           <MenuItem value={"United Kingdom"}>United Kingdom</MenuItem>
