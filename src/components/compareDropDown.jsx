@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-
-//dropdown:
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 //Array comes from all unique country names
@@ -56,7 +54,7 @@ const dropdownOptions = [
   "Liechtenstein",
 ];
 
-export default function DropdownCountry({setData, racesCount, driversCount, constructorsCount}) {
+export default function DropdownCountry({setData, setLabel, racesCount, driversCount, constructorsCount}) {
   let data = [0, 0, 0];   //default data
   const [countrySelected, setCountrySelected] = useState([]);
 
@@ -66,8 +64,7 @@ export default function DropdownCountry({setData, racesCount, driversCount, cons
       `This is handle change, getting the value: ${event.target.value}`
     );
     setCountrySelected(event.target.value);
-
-    console.log(data); //Is the barchart data
+    setLabel(event.target.value);
 
     for (let i = 0; i < racesCount.length; i++) {
       if (racesCount[i][0] === event.target.value) {
@@ -87,7 +84,7 @@ export default function DropdownCountry({setData, racesCount, driversCount, cons
         data[2] = constructorsCount[i][1]; //constructorsCount[i][1] is count
       }
     }
-
+    console.log(data); //Is the barchart data
     setData(data);    //setData sets the barchart data
   };
 
