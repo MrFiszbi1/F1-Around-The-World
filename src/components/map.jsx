@@ -4,12 +4,13 @@ import { Box } from "@mui/material";
 import filterConstructors from '../hooks/filterConstructors.js';
 import filterDrivers from '../hooks/filterDrivers.js';
 import filterRaces from '../hooks/filterRaces.js';
-import useFetchDrivers from '../hooks/useFetchDrivers.js';
 
-export default function Map() {
+export default function Map({ map }) {
   const [constructorsCount, setConstructorsCount] = useState([]);
   const [driversCount, setDriversCount] = useState([]);
   const [racesCount, setRacesCount] = useState([]);
+  const [dataSetInUse, setDataSetInUse] = useState([]);
+  const [dataTitle, setDataTitle] = useState("No data set selected");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +39,19 @@ export default function Map() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (map === "drivers") {
+      setDataSetInUse(driversCount);
+      setDataTitle("Number of drivers from each country");
+    } else if (map === "constructors") {
+      setDataSetInUse(constructorsCount);
+      setDataTitle("Number of constructors from each country");
+    } else {
+      setDataSetInUse(racesCount);
+      setDataTitle("Number races held in each country from 1950 to 2019");
+    }
+  }, [map, constructorsCount, driversCount, racesCount]);
+
   return (
     <Box sx={{
         display: 'flex',           
@@ -47,7 +61,7 @@ export default function Map() {
         width: '85%', 
         border: 1,
     }}>
-        <h3>Number of drivers from each country</h3>
+        <h3>{dataTitle}</h3>
         <Chart
         chartEvents={[
             {
@@ -56,7 +70,7 @@ export default function Map() {
                 const chart = chartWrapper.getChart();
                 const selection = chart.getSelection();
                 if (selection.length === 0) return;
-                const region = racesCount[selection[0].row + 1];
+                const region = dataSetInUse[selection[0].row + 1];
                 console.log("Selected : " + region);
             },
             },
@@ -64,7 +78,7 @@ export default function Map() {
         chartType="GeoChart"
         width="100%"
         height="400px"
-        data={racesCount}
+        data={dataSetInUse}
         />
     </Box>
   );

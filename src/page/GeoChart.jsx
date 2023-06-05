@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import Map from '../components/map';
 import Title from '../components/title';
+import MapDataSelect from '../components/mapDataSelect';
 
 const GeoChart = () => {
+  const [map, setMap] = useState('');
+  
+  useEffect(() => {
+    console.log(`Map is now set to: ${map}`);
+  }, [map]);
+
   return (
     <Box
       sx={{
@@ -14,7 +21,8 @@ const GeoChart = () => {
       }}
     >
       <Title />
-      <Map />
+      <MapDataSelect setMap={setMap}/>
+      {map && <Map map={map} />}
     </Box>
   );
 };

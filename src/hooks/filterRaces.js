@@ -52,11 +52,9 @@ const filterRaces = async () => {
   }
 
   if (nationalities.length > 0) {
-    console.log(nationalities);
     const uniqueNationalitiesSet = new Set(nationalities);
     uniqueNationalities.push(...Array.from(uniqueNationalitiesSet));
   }
-  console.log(uniqueNationalities);
 
   if (uniqueNationalities.length > 0) {
     const header = ['Country', 'Number of races held in each country'];
@@ -68,7 +66,6 @@ const filterRaces = async () => {
 
     nationalityCount.push(...countArray);
   }
-  console.log(nationalityCount);
 
   return nationalityCount;
 };
