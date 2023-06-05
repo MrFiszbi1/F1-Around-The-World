@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 //dropdown:
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
@@ -56,41 +56,39 @@ const dropdownOptions = [
   "Liechtenstein",
 ];
 
-export default function DropdownCountry() {
-  const [data, setData] = useState("");
+export default function DropdownCountry({setData, racesCount, driversCount, constructorsCount}) {
+  let data = [0, 0, 0];   //default data
+  const [countrySelected, setCountrySelected] = useState([]);
 
   //Now correctly changes data according to what the user picks, but takes some time to update
   const handleChange = (event) => {
     console.log(
       `This is handle change, getting the value: ${event.target.value}`
     );
+    setCountrySelected(event.target.value);
 
     console.log(data); //Is the barchart data
 
-    //Default vals
-    data.datasets[0] = 0;
-    data.datasets[1] = 0;
-    data.datasets[2] = 0;
-
-    //XXX: need to filter the data to a specific value
     for (let i = 0; i < racesCount.length; i++) {
       if (racesCount[i][0] === event.target.value) {
         //racesCount[i][0] is country
-        data.datasets[0] = racesCount[i][1]; //racesCount[i][1] is count
+        data[0] = racesCount[i][1]; //racesCount[i][1] is count
       }
     }
     for (let i = 0; i < driversCount.length; i++) {
       if (driversCount[i][0] === event.target.value) {
         //driversCount[i][0] is country
-        data.datasets[1] = driversCount[i][1]; //driversCount[i][1] is count
+        data[1] = driversCount[i][1]; //driversCount[i][1] is count
       }
     }
     for (let i = 0; i < constructorsCount.length; i++) {
       if (constructorsCount[i][0] === event.target.value) {
         //constructorsCount[i][0] is country
-        data.datasets[2] = constructorsCount[i][1]; //constructorsCount[i][1] is count
+        data[2] = constructorsCount[i][1]; //constructorsCount[i][1] is count
       }
     }
+
+    setData(data);    //setData sets the barchart data
   };
 
   //XXX: Fill in the rest of the dropdown options in menu item
@@ -101,7 +99,7 @@ export default function DropdownCountry() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value=""
+          value={countrySelected}
           label="Country"
           onChange={handleChange}
         >
