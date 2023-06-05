@@ -3,7 +3,7 @@ import Chart from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 
 //XXX: fix scaling issue, set both barcharts to the same scale
-export default function BarChart({ passedData, passedLabel }) {
+export default function BarChart({ passedData, passedLabel, backgroundColor, borderColor}) {
   //barchart component and data:
   const [barData, setBarData] = useState([]);
   const [barLabel, setBarLabel] = useState([]);
@@ -20,8 +20,8 @@ export default function BarChart({ passedData, passedLabel }) {
     datasets: [
       {
         label: barLabel,
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
         data: barData,
       },
     ],
