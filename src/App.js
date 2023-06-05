@@ -12,12 +12,7 @@ export default function App() {
   return (
     <div className="App">
       <div style={{ display: "flex", height: "100vh" }}>
-        <Sidebar
-          className="app"
-          style={{
-            backgroundColor: "rgb(0, 249, 249)",
-          }}
-        >
+        <Sidebar className="app">
           <SidebarMenu collapseSidebar={collapseSidebar} />
         </Sidebar>
         <section style={{ width: "100%", margin: "20px" }}>

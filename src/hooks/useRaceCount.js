@@ -8,7 +8,9 @@ const useRaceCount = (region) => {
   useEffect(() => {
     const fetchRaceCountByCountry = async () => {
       try {
-        const response = await axios.get("http://ergast.com/api/f1.json");
+        const response = await axios.get(
+          "http://ergast.com/api/f1.json?limit=1000"
+        );
 
         const races = response.data.MRData.RaceTable.Races;
         let raceCountByCountry = 0;

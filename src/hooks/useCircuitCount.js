@@ -10,7 +10,7 @@ const useCircuitCount = (region) => {
     const fetchCircuitCountByCountry = async () => {
       try {
         const response = await axios.get(
-          "http://ergast.com/api/f1/circuits.json"
+          "http://ergast.com/api/f1/circuits.json?limit=1000"
         );
 
         const circuits = response.data.MRData.CircuitTable.Circuits;

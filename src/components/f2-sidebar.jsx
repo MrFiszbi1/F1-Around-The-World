@@ -25,7 +25,7 @@ const CardComponent = ({ region }) => {
         sx={{
           width: "100%",
           height: "100%",
-          backgroundColor: "#02192B",
+          backgroundColor: "#18405f",
           opacity: 0.9,
         }}
       >
