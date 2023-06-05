@@ -5,7 +5,6 @@ import { Routes, Route } from "react-router-dom";
 import GeoChart from "./page/GeoChart";
 import CountryComparison from "./page/countryComparison";
 import Home from "./page/Home";
-import { Box } from "@mui/material";
 
 export default function App() {
   const { collapseSidebar, isSidebarCollapsed } = useProSidebar();

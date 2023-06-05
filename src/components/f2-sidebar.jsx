@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Card,
@@ -14,10 +14,38 @@ import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import useRaceCount from "../hooks/useRaceCount";
 import useCircuitCount from "../hooks/useCircuitCount";
 import { green } from "@mui/material/colors";
+import filterConstructors from "../hooks/filterConstructors.js";
+import filterDrivers from "../hooks/filterDrivers.js";
 
 const CardComponent = ({ region }) => {
+  const [constructorsCount, setConstructorsCount] = useState([]);
+  const [driversCount, setDriversCount] = useState([]);
   const { raceCount, raceNames } = useRaceCount(region);
   const { circuitCount, circuitNames, circuitURLs } = useCircuitCount(region);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await filterConstructors();
+      const filteredData = result.find((item) => item[0] === region);
+      if (filteredData) {
+        setConstructorsCount(filteredData.slice(1));
+      }
+    };
+
+    fetchData();
+  }, [region]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await filterDrivers();
+      const filteredData = result.find((item) => item[0] === region);
+      if (filteredData) {
+        setDriversCount(filteredData.slice(1));
+      }
+    };
+
+    fetchData();
+  }, [region]);
 
   return (
     <Box sx={{ width: 320 }}>
@@ -40,6 +68,28 @@ const CardComponent = ({ region }) => {
           }}
         />
         <CardContent>
+          <Accordion
+            disableGutters
+            sx={{ backgroundColor: "#b21e3c", color: "white" }}
+          >
+            <AccordionSummary sx={{ backgroundColor: "#b21e3c" }}>
+              <Typography>
+                Number of constructors from {region}:{" "}
+                {constructorsCount.length > 0 ? constructorsCount[0] : ""}
+              </Typography>
+            </AccordionSummary>
+          </Accordion>
+          <Accordion
+            disableGutters
+            sx={{ backgroundColor: "#b21e3c", color: "white" }}
+          >
+            <AccordionSummary sx={{ backgroundColor: "#b21e3c" }}>
+              <Typography>
+                Number of drivers from {region}:{" "}
+                {driversCount.length > 0 ? driversCount[0] : ""}
+              </Typography>
+            </AccordionSummary>
+          </Accordion>
           <Accordion
             id="panel1-header"
             aria-controls="panel1-content"
