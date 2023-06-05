@@ -54,8 +54,14 @@ const dropdownOptions = [
   "Liechtenstein",
 ];
 
-export default function DropdownCountry({setData, setLabel, racesCount, driversCount, constructorsCount}) {
-  let data = [0, 0, 0];   //default data
+export default function DropdownCountry({
+  setData,
+  setLabel,
+  racesCount,
+  driversCount,
+  constructorsCount,
+}) {
+  let data = [0, 0, 0]; //default data
   const [countrySelected, setCountrySelected] = useState([]);
 
   //Now correctly changes data according to what the user picks, but takes some time to update
@@ -85,7 +91,7 @@ export default function DropdownCountry({setData, setLabel, racesCount, driversC
       }
     }
     console.log(data); //Is the barchart data
-    setData(data);    //setData sets the barchart data
+    setData(data); //setData sets the barchart data
   };
 
   //XXX: Fill in the rest of the dropdown options in menu item

@@ -3,17 +3,16 @@ import Chart from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 
 //XXX: fix scaling issue, set both barcharts to the same scale
-export default function BarChart({passedData, passedLabel}) {
+export default function BarChart({ passedData, passedLabel }) {
   //barchart component and data:
   const [barData, setBarData] = useState([]);
   const [barLabel, setBarLabel] = useState([]);
-
 
   useEffect(() => {
     setBarData(passedData);
     setBarLabel(passedLabel);
     console.log("updated bar data: ", passedData);
-  },[passedData, passedLabel]);
+  }, [passedData, passedLabel]);
 
   const labels = ["races", "drivers", "constructors"];
   let data = {

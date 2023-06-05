@@ -43,8 +43,14 @@ const CountryComparison = () => {
     <div>
       <h2>This is the Bar Chart page</h2>
 
-      <DropdownCountry setData={setData} setLabel={setLabel} racesCount={racesCount} driversCount={driversCount} constructorsCount={constructorsCount}/>
-      <BarChart passedData={data} passedLabel={label}/>
+      <DropdownCountry
+        setData={setData}
+        setLabel={setLabel}
+        racesCount={racesCount}
+        driversCount={driversCount}
+        constructorsCount={constructorsCount}
+      />
+      <BarChart passedData={data} passedLabel={label} />
     </div>
   );
 };
