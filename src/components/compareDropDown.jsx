@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
-//Array comes from all unique country names
+//Array comes from all unique country names we have data for
 const dropdownOptions = [
   "United Kingdom",
   "Monaco",
@@ -97,7 +97,6 @@ export default function DropdownCountry({
     setData(data); //setData sets the barchart data
   };
 
-  //XXX: Fill in the rest of the dropdown options in menu item
   return (
     <div>
       <FormControl fullWidth>
@@ -112,6 +111,52 @@ export default function DropdownCountry({
           <MenuItem value={"United Kingdom"}>United Kingdom</MenuItem>
           <MenuItem value={"Monaco"}>Monaco</MenuItem>
           <MenuItem value={"United States"}>United States</MenuItem>
+          <MenuItem value={"Switzerland"}>Switzerland</MenuItem>
+          <MenuItem value={"Belgium"}>Belgium</MenuItem>
+          <MenuItem value={"France"}>France</MenuItem>
+          <MenuItem value={"Italy"}>Italy</MenuItem>
+          <MenuItem value={"Germany"}>Germany</MenuItem>
+          <MenuItem value={"Spain"}>Spain</MenuItem>
+          <MenuItem value={"Netherlands"}>Netherlands</MenuItem>
+          <MenuItem value={"Argentina"}>Argentina</MenuItem>
+          <MenuItem value={"Portugal"}>Portugal</MenuItem>
+          <MenuItem value={"Morocco"}>Morocco</MenuItem>
+          <MenuItem value={"South Africa"}>South Africa</MenuItem>
+          <MenuItem value={"Mexico"}>Mexico</MenuItem>
+          <MenuItem value={"Austria"}>Austria</MenuItem>
+          <MenuItem value={"Canada"}>Canada</MenuItem>
+          <MenuItem value={"Brazil"}>Brazil</MenuItem>
+          <MenuItem value={"Sweden"}>Sweden</MenuItem>
+          <MenuItem value={"Japan"}>Japan</MenuItem>
+          <MenuItem value={"Australia"}>Australia</MenuItem>
+          <MenuItem value={"Hungary"}>Hungary</MenuItem>
+          <MenuItem value={"Malaysia"}>Malaysia</MenuItem>
+          <MenuItem value={"Bahrain"}>Bahrain</MenuItem>
+          <MenuItem value={"China"}>China</MenuItem>
+          <MenuItem value={"Turkey"}>Turkey</MenuItem>
+          <MenuItem value={"Singapore"}>Singapore</MenuItem>
+          <MenuItem value={"United Arab Emirates"}>United Arab Emirates</MenuItem>
+          <MenuItem value={"South Korea"}>South Korea</MenuItem>
+          <MenuItem value={"India"}>India</MenuItem>
+          <MenuItem value={"Russia"}>Russia</MenuItem>
+          <MenuItem value={"Azerbaijan"}>Azerbaijan</MenuItem>
+          <MenuItem value={"Thailand"}>Thailand</MenuItem>
+          <MenuItem value={"New Zealand"}>New Zealand</MenuItem>
+          <MenuItem value={"Denmark"}>Denmark</MenuItem>
+          <MenuItem value={"Finland"}>Finland</MenuItem>
+          <MenuItem value={"Ireland"}>Ireland</MenuItem>
+          <MenuItem value={"Uruguay"}>Uruguay</MenuItem>
+          <MenuItem value={"Venezuela"}>Venezuela</MenuItem>
+          <MenuItem value={"Argentina-Italian"}>Argentina-Italian</MenuItem>
+          <MenuItem value={"Czech Republic"}>Czech Republic</MenuItem>
+          <MenuItem value={"East Germany"}>East Germany</MenuItem>
+          <MenuItem value={"Colombia"}>Colombia</MenuItem>
+          <MenuItem value={"Indonesia"}>Indonesia</MenuItem>
+          <MenuItem value={"Rhodesia"}>Rhodesia</MenuItem>
+          <MenuItem value={"Poland"}>Poland</MenuItem>
+          <MenuItem value={"Chile"}>Chile</MenuItem>
+          <MenuItem value={"American-Italian"}>American-Italian</MenuItem>
+          <MenuItem value={"Liechtenstein"}>Liechtenstein</MenuItem>
         </Select>
       </FormControl>
     </div>
