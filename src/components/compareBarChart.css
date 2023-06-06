@@ -1,0 +1,6 @@
+.barchart-container {
+    display: flex;
+    height: 600px;
+    width: auto;
+    justify-content: center;
+}
