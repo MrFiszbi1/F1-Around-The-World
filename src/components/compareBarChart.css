@@ -1,6 +1,19 @@
-.barchart-container {
+/* Designed for 768 by 768 and above */
+@media (min-width: 768px) {
+  .barchart-container {
+    display: flex;
+    height: 300px;
+    width: auto;
+    justify-content: center;
+  }
+}
+
+/* Designed for 1024 by 768 and above */
+@media (min-width: 1024px) {
+  .barchart-container {
     display: flex;
     height: 600px;
     width: auto;
     justify-content: center;
+  }
 }
