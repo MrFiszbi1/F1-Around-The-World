@@ -8,10 +8,11 @@ import Home from "./page/Home";
 
 export default function App() {
   const { collapseSidebar, isSidebarCollapsed } = useProSidebar();
+
   return (
     <div className="App">
       <div style={{ display: "flex", height: "100vh" }}>
-        <Sidebar className="app">
+        <Sidebar className="app" defaultCollapsed={true}>
           <SidebarMenu collapseSidebar={collapseSidebar} />
         </Sidebar>
         <section style={{ width: "100%", margin: "20px" }}>

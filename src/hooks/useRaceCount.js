@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import useFetchRaces from "./useFetchRaces";
 
 const useRaceCount = (region) => {
   const [raceCount, setRaceCount] = useState(0);
@@ -8,11 +8,9 @@ const useRaceCount = (region) => {
   useEffect(() => {
     const fetchRaceCountByCountry = async () => {
       try {
-        const response = await axios.get(
-          "http://ergast.com/api/f1.json?limit=1000"
-        );
+        const response = await useFetchRaces();
 
-        const races = response.data.MRData.RaceTable.Races;
+        const races = response.MRData.RaceTable.Races;
         let raceCountByCountry = 0;
         const uniqueRaceNames = new Set();
 
