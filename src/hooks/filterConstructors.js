@@ -1,4 +1,4 @@
-import useFetchConstructors from './useFetchConstructors';
+import useFetchConstructors from "./useFetchConstructors";
 
 const filterConstructors = async () => {
   const data = await useFetchConstructors();
@@ -6,30 +6,30 @@ const filterConstructors = async () => {
   const uniqueNationalities = [];
   const nationalityCount = [];
   const countryNames = [
-    'United States',
-    'Germany',
-    'France',
-    'Switzerland',
-    'Italy',
-    'United Kingdom',
-    'New Zealand',
-    'Netherlands',
-    'Malaysia',
-    'Germany',
-    'Belgium',
-    'Brazil',
-    'India',
-    'Japan',
-    'Spain',
-    'Ireland',
-    'South Africa',
-    'Russia',
-    'Australia',
-    'Rhodesia',
-    'Mexico',
-    'Austria',
-    'Canada',
-    'China',
+    "United States",
+    "Germany",
+    "France",
+    "Switzerland",
+    "Italy",
+    "United Kingdom",
+    "New Zealand",
+    "Netherlands",
+    "Malaysia",
+    "Germany",
+    "Belgium",
+    "Brazil",
+    "India",
+    "Japan",
+    "Spain",
+    "Ireland",
+    "South Africa",
+    "Russia",
+    "Australia",
+    "Rhodesia",
+    "Mexico",
+    "Austria",
+    "Canada",
+    "China",
   ];
 
   if (data) {
@@ -48,7 +48,7 @@ const filterConstructors = async () => {
   }
 
   if (uniqueNationalities.length > 0) {
-    const header = ['Country', 'Number of constructors from each country'];
+    const header = ["Country", "Number of constructors from each country"];
     let countArray = uniqueNationalities.map((uniqueNationality, index) => [
       countryNames[index],
       nationalities.filter((n) => n === uniqueNationality).length,

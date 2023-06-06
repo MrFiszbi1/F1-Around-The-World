@@ -1,30 +1,25 @@
-import './styles.css';
-import { Sidebar, useProSidebar } from 'react-pro-sidebar';
-import SidebarMenu from './components/SidebarMenu';
-import { Routes, Route } from 'react-router-dom';
-import GeoChart from './page/GeoChart';
-import CountryComparison from './page/countryComparison';
-import Home from './page/Home';
-import { Box } from '@mui/material';
+import "./styles.css";
+import { Sidebar, useProSidebar } from "react-pro-sidebar";
+import SidebarMenu from "./components/SidebarMenu";
+import { Routes, Route } from "react-router-dom";
+import GeoChart from "./page/GeoChart";
+import CountryComparison from "./page/countryComparison";
+import Home from "./page/Home";
 
 export default function App() {
   const { collapseSidebar, isSidebarCollapsed } = useProSidebar();
+
   return (
-    <div className='App'>
-      <div style={{ display: 'flex', height: '100vh' }}>
-        <Sidebar
-          className='app'
-          style={{
-            backgroundColor: 'rgb(0, 249, 249)',
-          }}
-        >
+    <div className="App">
+      <div style={{ display: "flex", height: "100vh" }}>
+        <Sidebar className="app" defaultCollapsed={true}>
           <SidebarMenu collapseSidebar={collapseSidebar} />
         </Sidebar>
-        <section style={{ width: '100%', margin: '20px' }}>
+        <section style={{ width: "100%", margin: "20px" }}>
           <Routes>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='geochart' element={<GeoChart />} />
-            <Route path='countrycomparison' element={<CountryComparison />} />
+            <Route path="/" element={<Home />}></Route>
+            <Route path="geochart" element={<GeoChart />} />
+            <Route path="countrycomparison" element={<CountryComparison />} />
           </Routes>
         </section>
       </div>
@@ -57,15 +52,15 @@ const constructors_file = './data/constructors.json'; */
   }
 }; */
 
-//Demo: fetching from the API - uncomment to see it work
-// fetchData(races_url); //races data, limit 1000. Working
-// fetchData(drivers_url); //driver data, limit 1000. Working
-// fetchData(constructors_url); //driver data, limit 300. Working
+// //Demo: fetching from the API - uncomment to see it work
+// // fetchData(races_url); //races data, limit 1000. Working
+// // fetchData(drivers_url); //driver data, limit 1000. Working
+// // fetchData(constructors_url); //driver data, limit 300. Working
 
-//Demo: fetching from the downloaded files - uncomment to see it work
-// fetchData(races_file);
-// fetchData(drivers_file);
-// fetchData(constructors_file);
+// //Demo: fetching from the downloaded files - uncomment to see it work
+// // fetchData(races_file);
+// // fetchData(drivers_file);
+// // fetchData(constructors_file);
 
 //Demo: fetch using an imported hook using API or downloaded
 //import useFetchData from './hooks/useFetchData'; async func, returns false if unable to fetch data.

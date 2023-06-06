@@ -1,12 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Box } from "@mui/material";
-import Map from '../components/map';
-import Title from '../components/title';
-import MapDataSelect from '../components/mapDataSelect';
+import Map from "../components/map";
+import Title from "../components/title";
+import CardComponent from "../components/f2-sidebar";
+import RegionContext from "../hooks/RegionProvider.jsx";
+import MapDataSelect from "../components/mapDataSelect";
 
 const GeoChart = () => {
-  const [map, setMap] = useState('');
-  
+  const { selectedRegion } = useContext(RegionContext);
+  const [map, setMap] = useState("");
+
+  // Convert selectedRegion object to string
+  const selectedRegionString = selectedRegion && selectedRegion.toString();
+
+  // Remove punctuation and number from string to remain region name only
+  const regionName =
+    selectedRegionString &&
+    selectedRegionString
+      .replace(/United States/g, "USA")
+      .replace(/[\d.,]+/g, "");
+
   useEffect(() => {
     console.log(`Map is now set to: ${map}`);
   }, [map]);
@@ -14,15 +27,22 @@ const GeoChart = () => {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <Title />
-      <MapDataSelect setMap={setMap}/>
-      {map && <Map map={map} />}
+
+      <MapDataSelect setMap={setMap} />
+      <Box sx={{ width: "100%", display: "flex" }}>
+        {map && <Map map={map} onMapChange={setMap} />}
+
+        <Box sx={{ height: "100%" }}>
+          {map !== "" && <CardComponent region={regionName} />}
+        </Box>
+      </Box>
     </Box>
   );
 };
