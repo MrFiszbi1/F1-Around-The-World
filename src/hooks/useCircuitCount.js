@@ -6,6 +6,13 @@ const useCircuitCount = (region) => {
   const [circuitNames, setCircuitNames] = useState([]);
   const [circuitURLs, setCircuitURLs] = useState([]);
 
+  const regionName =
+    region &&
+    region
+      .replace(/United States/g, "USA")
+      .replace(/[\d.,]+/g, "")
+      .replace(/United Kingdom/g, "UK");
+
   useEffect(() => {
     const fetchCircuitCountByCountry = async () => {
       try {
@@ -19,7 +26,7 @@ const useCircuitCount = (region) => {
         const circuitURLsArr = [];
 
         circuits.forEach((circuit) => {
-          if (circuit.Location.country === region) {
+          if (circuit.Location.country === regionName) {
             uniqueCircuitNames.add(circuit.circuitName);
             circuitURLsArr.push(circuit.url);
             countByCountry++;

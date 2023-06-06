@@ -17,7 +17,7 @@ const GeoChart = () => {
   const regionName =
     selectedRegionString &&
     selectedRegionString
-      .replace(/United States/g, "USA")
+      // .replace(/United States/g, "USA")
       .replace(/[\d.,]+/g, "");
 
   useEffect(() => {
