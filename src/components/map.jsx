@@ -68,7 +68,7 @@ export default function Map({ map, onMapChange }) {
         justifyContent: "center",
         alignItems: "center",
         width: "85%",
-        border: 1,
+        border: "none",
       }}
     >
       <h3>{dataTitle}</h3>

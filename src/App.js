@@ -12,9 +12,12 @@ export default function App() {
   return (
     <div className="App">
       <div style={{ display: "flex", height: "100vh" }}>
-        <Sidebar className="app" defaultCollapsed={true}>
-          <SidebarMenu collapseSidebar={collapseSidebar} />
-        </Sidebar>
+        <div style={{ height: "100%", backgroundColor: "#18405f" }}>
+          <Sidebar className="app" defaultCollapsed={true}>
+            <SidebarMenu collapseSidebar={collapseSidebar} />
+          </Sidebar>
+        </div>
+
         <section style={{ width: "100%", margin: "20px" }}>
           <Routes>
             <Route path="/" element={<Home />}></Route>

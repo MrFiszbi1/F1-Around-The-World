@@ -11,6 +11,10 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
+import GroupsIcon from "@mui/icons-material/Groups";
+import SportsMotorsportsIcon from "@mui/icons-material/SportsMotorsports";
+import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
+import SportsScoreIcon from "@mui/icons-material/SportsScore";
 import useRaceCount from "../hooks/useRaceCount";
 import useCircuitCount from "../hooks/useCircuitCount";
 import { green } from "@mui/material/colors";
@@ -73,7 +77,8 @@ const CardComponent = ({ region }) => {
             sx={{ backgroundColor: "#b21e3c", color: "white" }}
           >
             <AccordionSummary sx={{ backgroundColor: "#b21e3c" }}>
-              <Typography>
+              <Typography sx={{ display: "flex", fontSize: "13px" }}>
+                <GroupsIcon fontSize="small" sx={{ marginRight: "5px" }} />
                 Number of constructors from {region}:{" "}
                 {constructorsCount.length > 0 ? constructorsCount[0] : ""}
               </Typography>
@@ -84,7 +89,11 @@ const CardComponent = ({ region }) => {
             sx={{ backgroundColor: "#b21e3c", color: "white" }}
           >
             <AccordionSummary sx={{ backgroundColor: "#b21e3c" }}>
-              <Typography>
+              <Typography sx={{ display: "flex", fontSize: "13px" }}>
+                <SportsMotorsportsIcon
+                  fontSize="small"
+                  sx={{ marginRight: "5px" }}
+                />
                 Number of drivers from {region}:{" "}
                 {driversCount.length > 0 ? driversCount[0] : ""}
               </Typography>
@@ -102,12 +111,18 @@ const CardComponent = ({ region }) => {
               expandIcon={<ExpandMoreIcon sx={{ color: green[100] }} />}
               sx={{ backgroundColor: "#b21e3c" }}
             >
-              <Typography>
+              <Typography sx={{ display: "flex", fontSize: "13px" }}>
+                <AllInclusiveIcon
+                  fontSize="small"
+                  sx={{ marginRight: "5px" }}
+                />
                 Number of races in {region}: {raceCount}
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography color={"#ffffff"}>Name of races</Typography>
+              <Typography color={"#152b82"} fontWeight={"bold"}>
+                Race's name:
+              </Typography>
               <Typography>
                 {raceNames.map((race, index) => (
                   <Typography key={index}>{race}</Typography>
@@ -122,9 +137,10 @@ const CardComponent = ({ region }) => {
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon sx={{ color: green[100] }} />}
-              sx={{ backgroundColor: "#b21e3c" }}
+              sx={{ backgroundColor: "#b21e3c", display: "flex" }}
             >
-              <Typography>
+              <SportsScoreIcon />
+              <Typography sx={{ display: "flex", fontSize: "13px" }}>
                 Number of circuit in {region}: {circuitCount}
               </Typography>
             </AccordionSummary>
