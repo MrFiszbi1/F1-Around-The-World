@@ -16,7 +16,7 @@ const Home = () => {
       <h1>Welcome to F1 Around The World</h1>
       <h5>By Jaafar Rodgers, Minh Ma, and Gabriel Sampang</h5>
         <p>
-          This is a Dashboard website around F1 APIs. The goal is to visualize F1 data through different visualizations.
+          This is a Dashboard website using F1 APIs. The goal is to visualize F1 data through different visualizations.
         </p>
         <Box
           sx={{
