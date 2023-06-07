@@ -26,7 +26,7 @@ const GeoChart = () => {
 
   return (
     <Box
-      class= "GeoChart"
+      class= "Page"
       sx={{
         display: "flex",
         flexDirection: "column",

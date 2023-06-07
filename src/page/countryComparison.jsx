@@ -44,7 +44,7 @@ const CountryComparison = () => {
 
   //red and blue bar chart colors
   return (
-    <div class="CountryComparison">
+    <div class="Page">
       <h2>Compare any 2 Countries</h2>
 
       <Grid container spacing={5}>
