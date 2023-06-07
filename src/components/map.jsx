@@ -67,7 +67,7 @@ export default function Map({ map, onMapChange }) {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        width: "85%",
+        width: "100%",
         border: "none",
       }}
     >

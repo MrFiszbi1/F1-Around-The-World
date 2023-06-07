@@ -10,13 +10,8 @@ body {
   background-color: rgb(118, 150, 201);
 }
 
-.CountryComparison {
+.Page {
   background: white;
   background-color: white;
-}
-
-.GeoChart {
-  background: white;
-  background-color: white;
-  padding: 10px;
+  padding: 20px;
 }

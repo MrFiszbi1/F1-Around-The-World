@@ -26,7 +26,7 @@ const GeoChart = () => {
 
   return (
     <Box
-      class= "GeoChart"
+      class= "Page"
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -37,10 +37,11 @@ const GeoChart = () => {
       <Title />
 
       <MapDataSelect setMap={setMap} />
-      <Box sx={{ width: "80%", display: "flex" }}>
-        {map && <Map map={map} onMapChange={setMap} />}
-
-        <Box sx={{ height: "100%", marginLeft: "15px", paddingTop: "3.8rem" }}>
+      <Box sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+        <Box sx={{ width: "60%", display: "flex"}}>
+          {map && <Map map={map} onMapChange={setMap} />}
+        </Box>
+        <Box sx={{ height: "100%", marginLeft: "15px", paddingTop: "3.8rem", display: "flex"}}>
           {map !== "" && <CardComponent region={regionName} />}
         </Box>
       </Box>
