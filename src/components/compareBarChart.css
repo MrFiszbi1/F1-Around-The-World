@@ -1,0 +1,29 @@
+/* Designed for 768 by 768 and above */
+@media (min-width: 768px) {
+  .barchart-container {
+    display: flex;
+    height: 300px;
+    width: auto;
+    justify-content: center;
+  }
+}
+
+/* Designed for 1024 by 768 and above */
+@media (min-width: 1024px) {
+  .barchart-container {
+    display: flex;
+    height: 400px;
+    width: auto;
+    justify-content: center;
+  }
+}
+
+/* Designed for wide screen */
+@media (min-width: 1280px) {
+  .barchart-container {
+    display: flex;
+    height: 500px;
+    width: auto;
+    justify-content: center;
+  }
+}
