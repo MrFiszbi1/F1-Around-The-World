@@ -10,8 +10,15 @@ import { blueGrey } from "@mui/material/colors";
 const SidebarMenu = ({ collapseSidebar }) => {
   return (
     <Menu
+      menuItemStyles={{
+        button: {
+          backgroundColor: "#18405f",
+          "&:hover": {
+            backgroundColor: "#b21e3c",
+          },
+        },
+      }}
       style={{
-        backgroundColor: "#18405f",
         height: "100%",
         color: "white",
       }}

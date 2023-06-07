@@ -5,6 +5,13 @@ const useRaceCount = (region) => {
   const [raceCount, setRaceCount] = useState(0);
   const [raceNames, setRaceNames] = useState([]);
 
+  const regionName =
+    region &&
+    region
+      .replace(/United States/g, "USA")
+      .replace(/[\d.,]+/g, "")
+      .replace(/United Kingdom/g, "UK");
+
   useEffect(() => {
     const fetchRaceCountByCountry = async () => {
       try {
@@ -15,7 +22,7 @@ const useRaceCount = (region) => {
         const uniqueRaceNames = new Set();
 
         races.forEach((race) => {
-          if (race.Circuit.Location.country === region) {
+          if (race.Circuit.Location.country === regionName) {
             uniqueRaceNames.add(race.raceName);
             raceCountByCountry++;
           }
