@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Chart from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
+import "./compareBarChart.css"
 
 export default function BarChart({
   passedData1,
@@ -26,6 +27,7 @@ export default function BarChart({
     console.log("updated bar data: ", passedData1, passedData2);
   }, [passedData1, passedLabel1, passedData2, passedLabel2]);
 
+  Chart.defaults.font.size = 18;
   const labels = ["races", "drivers", "constructors"];
   let data = {
     labels: labels,
@@ -46,7 +48,7 @@ export default function BarChart({
   };
 
   return (
-    <div>
+    <div className="barchart-container">
       <Bar data={data} />
     </div>
   );
