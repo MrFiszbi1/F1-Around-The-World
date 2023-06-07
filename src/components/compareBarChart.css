@@ -12,7 +12,17 @@
 @media (min-width: 1024px) {
   .barchart-container {
     display: flex;
-    height: 600px;
+    height: 400px;
+    width: auto;
+    justify-content: center;
+  }
+}
+
+/* Designed for wide screen */
+@media (min-width: 1280px) {
+  .barchart-container {
+    display: flex;
+    height: 500px;
     width: auto;
     justify-content: center;
   }
