@@ -1,5 +1,6 @@
 {
   "name": "react",
+  "homepage": "https://mrfiszbi1.github.io/F1-Around-The-World/",
   "version": "1.0.0",
   "description": "React example starter project",
   "keywords": [
@@ -14,6 +15,7 @@
     "@mui/material": "^5.13.3",
     "axios": "^1.4.0",
     "chart.js": "^4.3.0",
+    "gh-pages": "^5.0.0",
     "loader-utils": "3.2.1",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
@@ -25,13 +27,17 @@
   },
   "devDependencies": {
     "@babel/runtime": "7.13.8",
-    "typescript": "4.1.3"
+    "typescript": "4.1.3",
+    "gh-pages": "^3.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+   
   },
   "browserslist": [
     ">0.2%",
